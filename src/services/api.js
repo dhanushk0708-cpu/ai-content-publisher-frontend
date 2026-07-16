@@ -1,26 +1,42 @@
-const BASE_URL = "https://ai-content-publisher-backend.onrender.com";
+const BASE_URL =
+    "https://ai-content-publisher-backend.onrender.com";
 
 export async function generateSEO(instagramUrl) {
 
-    const response = await fetch(`${BASE_URL}/upload`, {
+    const token = localStorage.getItem("token");
 
-        method: "POST",
+    const response = await fetch(
 
-        headers: {
-            "Content-Type": "application/json",
-        },
+        `${BASE_URL}/upload`,
 
-        body: JSON.stringify({
-            instagram_url: instagramUrl,
-        }),
+        {
 
-    });
+            method: "POST",
 
-    if (!response.ok) {
+            headers: {
 
-        throw new Error("Failed to generate content");
+                "Content-Type":"application/json",
+
+                Authorization:`Bearer ${token}`,
+
+            },
+
+            body:JSON.stringify({
+
+                instagram_url:instagramUrl,
+
+            }),
+
+        }
+
+    );
+
+    if(!response.ok){
+
+        throw new Error("Generate Failed");
 
     }
 
     return await response.json();
+
 }
