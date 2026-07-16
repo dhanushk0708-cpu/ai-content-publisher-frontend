@@ -1,0 +1,376 @@
+/* ===========================
+   PREMIUM SIDEBAR
+=========================== */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:280px;
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:28px;
+
+    background:linear-gradient(
+        180deg,
+        #0f172a 0%,
+        #111827 50%,
+        #1e293b 100%
+    );
+
+    color:white;
+
+    box-sizing:border-box;
+
+    box-shadow:
+        8px 0 30px rgba(0,0,0,.25);
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:45px;
+
+}
+
+.logo-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    box-shadow:
+        0 10px 25px rgba(37,99,235,.35);
+
+}
+
+.logo h2{
+
+    margin:0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.logo p{
+
+    margin-top:4px;
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.sidebar-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.sidebar-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px 18px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    color:#cbd5e1;
+
+}
+
+.sidebar-item:hover{
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    transform:translateX(6px);
+
+}
+
+.sidebar-item.active{
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    color:white;
+
+    box-shadow:
+        0 12px 30px rgba(37,99,235,.35);
+
+}
+
+.menu-icon{
+
+    font-size:22px;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.menu-title{
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.sidebar-footer{
+
+    margin-top:auto;
+
+}
+
+/* ===========================
+   USER CARD
+=========================== */
+
+.user-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    backdrop-filter:blur(12px);
+
+}
+
+.user-card img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+}
+
+.user-card h4{
+
+    margin:0;
+
+    font-size:16px;
+
+}
+
+.user-card span{
+
+    font-size:13px;
+
+    color:#94a3b8;
+
+}
+
+/* ===========================
+   LOGOUT BUTTON
+=========================== */
+
+.logout-btn{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
+
+    transition:.30s;
+
+}
+
+.logout-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(239,68,68,.35);
+
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+.sidebar::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:20px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1100px){
+
+.sidebar{
+
+    width:90px;
+
+    padding:18px;
+
+}
+
+.logo h2,
+.logo p,
+.menu-title,
+.user-card div,
+.logout-btn{
+
+    display:none;
+
+}
+
+.logo{
+
+    justify-content:center;
+
+}
+
+.logo-icon{
+
+    width:55px;
+
+    height:55px;
+
+}
+
+.sidebar-item{
+
+    justify-content:center;
+
+    padding:16px;
+
+}
+
+.menu-icon{
+
+    font-size:24px;
+
+}
+
+.user-card{
+
+    justify-content:center;
+
+}
+
+.user-card img{
+
+    margin:0;
+
+}
+
+}
