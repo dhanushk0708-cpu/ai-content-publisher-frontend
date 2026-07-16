@@ -1,38 +1,33 @@
 const BASE_URL =
-    "https://ai-content-publisher-backend.onrender.com";
+  "https://ai-content-publisher-backend.onrender.com";
 
-export async function uploadVideo(data){
+export async function uploadVideo(data) {
 
-    const token=localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-    const response=await fetch(
+  if (!token) {
+    throw new Error("Please login first.");
+  }
 
-        `${BASE_URL}/youtube/upload`,
+  const response = await fetch(
+    `${BASE_URL}/youtube/upload`,
+    {
+      method: "POST",
 
-        {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
 
-            method:"POST",
-
-            headers:{
-
-                "Content-Type":"application/json",
-
-                Authorization:`Bearer ${token}`,
-
-            },
-
-            body:JSON.stringify(data),
-
-        }
-
-    );
-
-    if(!response.ok){
-
-        throw new Error("Upload Failed");
-
+      body: JSON.stringify(data),
     }
+  );
 
-    return await response.json();
+  const result = await response.json();
 
+  if (!response.ok) {
+    throw new Error(result.detail || "Upload Failed");
+  }
+
+  return result;
 }

@@ -78,45 +78,54 @@ function Dashboard() {
 
   async function handleUpload() {
 
-    try {
+  try {
 
-      setUploading(true);
-
-      const response = await uploadVideo({
-
-        video_path: result.video.url.replace(
-          "http://127.0.0.1:8000/videos/",
-          "storage/videos/"
-        ),
-
-        title,
-        description,
-        hashtags,
-        privacy,
-        category,
-
-      });
-
-      console.log(response);
-
-      setVideoUrl(response.url);
-
-      alert("Upload Successful!");
-
-    } catch (err) {
-
-      console.error(err);
-
-      alert("Upload Failed");
-
-    } finally {
-
-      setUploading(false);
-
+    if (!result) {
+      alert("Generate SEO first.");
+      return;
     }
+
+    setUploading(true);
+
+    setError("");
+
+    const filename = result.video.url.split("/").pop();
+
+    const response = await uploadVideo({
+
+      video_path: `storage/videos/${filename}`,
+
+      title: title.trim(),
+
+      description: description.trim(),
+
+      hashtags,
+
+      privacy,
+
+      category,
+
+    });
+
+    console.log("Upload Response:", response);
+
+    setVideoUrl(response.url);
+
+    alert("✅ Uploaded Successfully!");
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert(err.message || "Upload Failed");
+
+  } finally {
+
+    setUploading(false);
 
   }
 
+}
   return (
 
     <AppLayout>
